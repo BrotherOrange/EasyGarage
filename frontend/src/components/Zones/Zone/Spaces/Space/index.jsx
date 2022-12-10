@@ -2,14 +2,15 @@ import React, {useContext, useState} from 'react';
 import {Col, DatePicker, Descriptions, Form, Input, Modal, Select, Tooltip} from "antd";
 import styles from "./index.module.less"
 import {ZoneTypeCtx} from "../../../utils";
-import {useBeginParkMutation, useGetCurrentUserCarsQuery} from "../../../../../api/api";
+import {useBeginParkMutation, useGetCurrentUserCarsQuery, useMakeReserveMutation} from "../../../../../api/api";
 
 const {Option} = Select
 const {RangePicker} = DatePicker;
 
 function Space(props) {
-    const {id, status, floor, number, normalPrice, latePrice} = props
+    const {id, status, floor, number, normalPrice, latePrice, vehicleID} = props
     let {data: cars, isFetching, refetch} = useGetCurrentUserCarsQuery()
+    const [makeReserve] = useMakeReserveMutation()
     let space_style = styles.colNotPark
     switch (status) {
         case 1:
@@ -40,7 +41,13 @@ function Space(props) {
                         vehicle_name: values.ownCars
                     })
                 } else {
-                    console.log(values)
+                    const obj = {
+                        vehicle_name: values.ownCars,
+                        begin_time: values["range-time-picker"][0].format("yyyy-MM-DD HH:mm:ss.000"),
+                        end_time: values["range-time-picker"][1].format("yyyy-MM-DD HH:mm:ss.000"),
+                        floor, number, status
+                    }
+                    makeReserve(obj)
                 }
 
                 form.resetFields();
@@ -52,6 +59,18 @@ function Space(props) {
     }
     const handleCancel = () => {
         setIsModalOpen(false);
+    }
+    let title = ""
+    switch (status) {
+        case 1:
+            title = "Free"
+            break
+        case 2:
+            title = `Vehicle: ${vehicleID.name}`
+            break
+        case 3:
+            title = "Reserved"
+            break
     }
     return (
         <>
@@ -67,19 +86,43 @@ function Space(props) {
                     title={
                         <div>
                             <Descriptions
-                                title={<div style={{color: "white"}}>{status === 1 ? `Vehicle: ${"null"}` : "Free"}</div>}
+                                title={<div style={{color: "white"}}>{title}</div>}
                                 column={1}
                             >
                                 {
                                     Object.entries(props).map(item => {
                                         // if (item[0] === vehicle_parking_id) return ""
                                         if (!item[1] || item[1] === true) return ""
-                                        return <Descriptions.Item
-                                            label={item[0]}
-                                            key={item[0]}
-                                            contentStyle={{color: "white"}}
-                                            labelStyle={{color: "white"}}
-                                        >{item[1]}</Descriptions.Item>
+                                        // console.log(item[1], "item1")
+                                        if (item[1] instanceof Object) {
+                                            return Object.entries(item[1]).map(item2 => {
+                                                if (item2[0] === "userID") {
+                                                    return <Descriptions.Item
+                                                        label={"email"}
+                                                        key={item2[0].id}
+                                                        contentStyle={{color: "white"}}
+                                                        labelStyle={{color: "white"}}
+                                                    >{item2[1].email}</Descriptions.Item>
+                                                }
+                                                return <Descriptions.Item
+                                                    label={item2[0]}
+                                                    key={item2[0]}
+                                                    contentStyle={{color: "white"}}
+                                                    labelStyle={{color: "white"}}
+                                                >{item2[1]}</Descriptions.Item>
+                                            })
+                                        }
+                                        if (status !== 2 && status !== 3) {
+                                            return <Descriptions.Item
+                                                label={item[0]}
+                                                key={item[0]}
+                                                contentStyle={{color: "white"}}
+                                                labelStyle={{color: "white"}}
+                                            >{item[1]}</Descriptions.Item>
+                                        } else {
+                                            return <></>
+                                        }
+
                                     })
                                 }
                             </Descriptions>
@@ -122,7 +165,7 @@ function Space(props) {
                                     allowClear
                                 >
                                     {cars.filter(car => {
-                                        return car.status !== 1
+                                        return car.status !== 0
                                     }).map(car => {
                                         return <Option value={car.name}>{car.name}</Option>
                                     })}
