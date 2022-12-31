@@ -127,11 +127,11 @@ This project is a web application called **Easy Garage**, which is a commercial 
     - Create (By Procedure) [Delete Reserve -> POST](http://easygarage.link:8088/api/places/position)
     - Read
         - All [Get all->GET](http://easygarage.link:8088/api/places)
-        - By `id`[Get by ID->GET](http://easygarage.link:8088/api/places/id/1)
+        - By `id` [Get by ID->GET](http://easygarage.link:8088/api/places/id/1)
         - By `floor` [Get all places categorized by floors -> GET](http://easygarage.link:8088/api/places/floors)
-        - By `floor` & `number`[Get by floor -> GET](http://easygarage.link:8088/api/places/floors)
+        - By `floor` & `number` [Get by floor -> GET](http://easygarage.link:8088/api/places/floors)
         - By `status` [Get all free spaces -> GET](http://easygarage.link:8088/api/places/free/all)
-        - By `floor`, `type` & `status`[Get all free places of specific floor and type -> POST](http://easygarage.link:8088/api/places/free/param)
+        - By `floor`, `type` & `status` [Get all free places of specific floor and type -> POST](http://easygarage.link:8088/api/places/free/param)
     - Update [Update place status -> PUT](http://easygarage.link:8088/api/places/update)
 - **Parking**
     - Create [Begin parking -> POST](http://ec2-3-92-225-56.compute-1.amazonaws.com:8088/api/parkings/add)
@@ -142,28 +142,27 @@ This project is a web application called **Easy Garage**, which is a commercial 
     - Update [Stop parking -> PUT](http://easygarage.link:8088/api/parkings/update)
     - Delete
         - By `id` [Delete by id -> DELETE](http://easygarage.link:8088/api/parkings/delete/id/19)
-        - By `begin`[Delete by begin time -> DELETE](http://easygarage.link:8088/api/parkings/delete/time/2022-12-07%2016%3A41%3A36.000)
+        - By `begin` [Delete by begin time -> DELETE](http://easygarage.link:8088/api/parkings/delete/time/2022-12-07%2016%3A41%3A36.000)
 - **Reservation**
     - Create [Create reservation -> POST](http://easygarage.link:8088/api/reservations/add)
     - Read
-        - All[Find all reservation -> GET](http://easygarage.link:8088/api/reservations)
-        - By `id`[Find reservation by id -> GET](http://easygarage.link:8088/api/reservations/id/9)
-        - By `created_at`[Find by created time -> POST](http://easygarage.link:8088/api/reservations/time)
-    - Update[End a reservation -> PUT](http://easygarage.link:8088/api/reservations/update)
+        - All [Find all reservation -> GET](http://easygarage.link:8088/api/reservations)
+        - By `id` [Find reservation by id -> GET](http://easygarage.link:8088/api/reservations/id/9)
+        - By `created_at` [Find by created time -> POST](http://easygarage.link:8088/api/reservations/time)
+    - Update [End a reservation -> PUT](http://easygarage.link:8088/api/reservations/update)
     - Delete
-        - By `id`[Delete by id -> DELETE](http://easygarage.link:8088/api/reservations/delete/id/10)
-        - By `created_at`[Delete by created time -> DELETE](http://easygarage.link:8088/api/reservations/delete/time/2022-12-07%2017%3A06%3A11.000)
+        - By `id` [Delete by id -> DELETE](http://easygarage.link:8088/api/reservations/delete/id/10)
+        - By `created_at` [Delete by created time -> DELETE](http://easygarage.link:8088/api/reservations/delete/time/2022-12-07%2017%3A06%3A11.000)
 - **Comment**
-    - Create [make comment -> POST](http://easygarage.link:8088/api/comments/add)
+    - Create [Make comment -> POST](http://easygarage.link:8088/api/comments/add)
     - Read
         - All [Read all comments -> GET](http://easygarage.link:8088/api/comments)
-        - By `id`[Read comments by id -> GET](http://easygarage.link:8088/api/comments/id/1)
-        - By `created_at`[Find comments by created time->GET](http://easygarage.link:8088/api/comments/time)
-    - Update
-        - [update comment->PUT](http://easygarage.link:8088/api/comments/update)
+        - By `id` [Read comments by id -> GET](http://easygarage.link:8088/api/comments/id/1)
+        - By `created_at` [Find comments by created time->GET](http://easygarage.link:8088/api/comments/time)
+    - Update [Update comment->PUT](http://easygarage.link:8088/api/comments/update)
     - Delete
-        - By `id`[Delete by id -> DELETE](http://easygarage.link:8088/api/comments/delete/id/2)
-        - By `created_at`[Delete by created time -> DELETE](http://easygarage.link:8088/api/comments/delete/time/2022-12-07%2017%3A21%3A01.000)
+        - By `id` [Delete by id -> DELETE](http://easygarage.link:8088/api/comments/delete/id/2)
+        - By `created_at` [Delete by created time -> DELETE](http://easygarage.link:8088/api/comments/delete/time/2022-12-07%2017%3A21%3A01.000)
 
 ## Technical Specifications
 
