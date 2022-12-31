@@ -9,7 +9,6 @@
 5. [Demo](#Demo)
 6. [Lesson Learned](#Lesson-Learned)
 7. [Future Work](#Future-Work)
-8. [Acknowledgment](#Acknowledgment)
 
 ## Overview
 
