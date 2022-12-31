@@ -155,7 +155,7 @@ This project is a web application called **Easy Garage**, which is a commercial 
         - By `id`[Delete by id -> DELETE](http://easygarage.link:8088/api/reservations/delete/id/10)
         - By `created_at`[Delete by created time -> DELETE](http://easygarage.link:8088/api/reservations/delete/time/2022-12-07%2017%3A06%3A11.000)
 - **Comment**
-    - Create[make comment -> POST](http://easygarage.link:8088/api/comments/add)
+    - Create [make comment -> POST](http://easygarage.link:8088/api/comments/add)
     - Read
         - All [Read all comments -> GET](http://easygarage.link:8088/api/comments)
         - By `id`[Read comments by id -> GET](http://easygarage.link:8088/api/comments/id/1)
@@ -219,5 +219,3 @@ This project is a web application called **Easy Garage**, which is a commercial 
 4. Different authentications for account type, such as: Owner, Manager, Administrator and User could be added to the app to make the management system more robust.
 5. Provide upgrade services for normal users to become VIP users to get better services and discounts when parking.
 6. Make Profile Image editable and add more columns for User to save more information and create better using experience.
-
-## Acknowledgment
